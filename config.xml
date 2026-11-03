@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.sickleswebdesign.forgeform" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ForgeForm</name>
+    <description>A simple weightlifting program planner.</description>
+    <author email="kevin.viren@my.lsc.edu" href="https://cordova.apache.org">
+        Kevin Viren
+    </author>
+    <content src="index.html"/>
+	<allow-navigation href="*://*.webhostingforstudents.com/*"/>
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+	<preference name="AndroidPersistentFileLocation" value="Internal"/>
+</widget>

@@ -1,0 +1,86 @@
+<!-- Modal -->
+<div class="modal fade bs-modal-sm log-sign" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+    
+			<div>
+				<ul id="myTab" class="nav nav-tabs">
+					<li id="tab1" class=" active tab-style login-shadow "><a href="#signin" data-bs-toggle="tab">Log In</a></li>
+					<li id="tab2" class=" tab-style "><a href="#signup" data-bs-toggle="tab">Sign Up</a></li>
+                </ul>
+			</div>
+  
+			<div class="modal-body">
+				<div id="myTabContent" class="tab-content">
+   
+					<div class="tab-pane fade active in" id="signin">
+						<form class="form-horizontal" id="frm-login" name="frm-login-account">
+							<fieldset>
+								<!-- Email Input -->  
+								<div class="group">
+									<input required="" class="input" type="text" name="email"><span class="highlight"></span><span class="bar"></span>
+									<label class="label" for="date">Email address</label>
+								</div>
+						  
+								<!-- Password input-->
+								<div class="group">
+									<input required="" class="input" type="password" name="pass1"><span class="highlight"></span><span class="bar"></span>
+									<label class="label" for="date">Password</label>
+								</div>
+								<em>minimum 6 characters</em>
+						
+
+								<!-- Button -->
+								<div class="control-group">
+									<label class="control-label" for="signin"></label>
+									<div class="controls">
+										<a id="btn-login-user" class="btn w-100">Log In</a>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+      
+      
+					<div class="tab-pane fade" id="signup">
+						<form class="form-horizontal" name="frm-create-account">
+							<fieldset>
+								<!-- Sign Up Form -->
+						
+								<!-- Email input-->
+								<div class="group">
+									<input required="" class="input" type="text" name="email"><span class="highlight"></span><span class="bar"></span>
+									<label class="label" for="date">Email</label>
+								</div>
+												
+								<!-- Password input-->
+								<div class="group">
+									<input required="" class="input" type="password" name="pass1" id="pass1"><span class="highlight"></span><span class="bar"></span>
+									<label class="label" for="date">Password</label>
+								</div>
+								<em>1-8 Characters</em>
+												
+								<div class="group2">
+									<input required="" class="input" type="password" name="pass2" id="pass2"><span class="highlight"></span><span class="bar"></span>
+									<label class="label" for="date">Re-type Password</label>
+								</div>
+								
+								<div class="group">
+									<p id="errMsg"></p>
+								</div>
+								
+								<!-- Button -->
+								<div class="control-group">
+									<label class="control-label" for="confirmsignup"></label>
+									<div class="controls">
+										<a href="#" class="btn w-100" id="btn-create-user">Sign Up</a>
+									</div><!--id="confirmsignup"-->
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

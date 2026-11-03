@@ -1,0 +1,30 @@
+{
+  "name": "com.sickleswebdesign.forgeform",
+  "displayName": "ForgeForm",
+  "version": "1.0.0",
+  "description": "A simple fitness tracker app allowing for exercise logging as well as workout program creation and organization.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-android": "^14.0.0",
+    "cordova-browser": "^7.0.0",
+    "cordova-plugin-screen-orientation": "^3.0.4",
+    "es6-promise-plugin": "^4.2.2"
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-screen-orientation": {}
+    }
+  }
+}

@@ -1,0 +1,53 @@
+/*
+	File: custom.css
+	Date: 2/6/2025 (modified 2/9/2025)
+	Name: Kevin Viren
+*/
+
+body {
+	background-color: #72B2FE;
+}
+
+header {
+	background-color: #0375FD;
+}
+
+nav.bg-dark {
+	background-color: #033C7F!important;
+	text-align: center;
+	size: 16px;
+}
+
+main {
+	background-color: #DCEBFE;
+}
+
+div#content {
+	padding-top: 30px;
+}
+
+footer {
+	background-color: #033C7F!important;
+	margin-top: 20%;
+	color: #72B2FE;
+	padding: 20px 8px;
+	font-size: 13px;
+	text-align: center;
+}
+
+h3.page-title {
+	color: #2D8DFF;
+	padding-left: 10px;
+}
+
+h3, h6 {
+	font-weight: bold;
+}
+
+hr, a, a:before, a:after, a:hover {
+	color: #033C7F;
+}
+
+div.name {
+	text-align: center;
+}

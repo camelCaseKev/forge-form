@@ -1,0 +1,124 @@
+body { background-color: #14172A;}
+.errors 	{ display: none; }
+
+.modal-title {
+	font-size: 18px;
+}
+
+.btn-primary { background-color: #4F7D8C; border: solid 1px #4F7D8C; border-radius: 0; }
+.btn-primary:hover { background-color: #7B9EAB;}
+
+body {
+	color: #DADFF5;
+	min-height: 100vh;
+}
+
+.header, #footer div.row { 
+	background-color: #191919;
+}
+
+/*#footer div.row {
+	background-color: #191919;
+}*/
+
+.header {
+	border-top: 3px solid #14172A;
+	border-bottom: 3px solid #857C01;
+	padding-bottom: 2px;
+}
+
+.footer {
+	/*border-top: 4px solid #A29602;*/
+	border-top: 3px solid #857C01;
+}
+
+/*.footer h5 { 
+	padding-top: 8px;
+	text-align: center;
+}*/
+
+i.ui-button {
+	color: #BCC1D4;
+}
+
+i.light-icon {
+	color: #857C01;
+	font-size: 2em;
+}
+
+/*a#add-program-btn {
+	width: 15%;
+	margin: 0 auto;
+}*/
+
+a.light-icon {
+	width: 20% !important;
+	margin: 0 auto !important;
+}
+
+a.settings-btn {
+	background-color: #857C01;
+	color: #212121;
+	margin-top: 5px;
+}
+
+form {
+	background-color: transparent;
+}
+
+td {
+	color: #DEDEDE;
+	border-bottom: 0;
+}
+
+#btn_logout_app {
+	/*display: block;*/
+	margin: 50px auto;
+	font-weight: bold;
+}
+
+#splashImg {
+	margin-top: calc(100vh / 2 - 260px);
+}
+
+.modal-header, .modal-footer {
+	background-color: #323232;
+	color: white;
+}
+
+.error { color: white; font-weight: bold; background-color: #323232; padding: 10px; text-align: center; border: 2px solid crimson; }
+			
+.errors { background-color: white; width: 95vw; padding: 20px;  word-wrap: break-word; margin: 10px auto;}
+.errors div span { color: crimson; font-weight: bold; }
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+#page-exercises {display: none;}
+#page-settings {display: none;}
+
+
+#exercise-container {
+	margin: 25px 0px;
+}
+
+.input-small {
+  max-width: 50px;
+}
+
+.input-medium {
+	max-width: 90px;
+}
+
+.exercise {
+	background-color: #191919;
+	border: 1px solid #857C01 !important;
+}
+
+.program-btn {
+	background-color: #8F8F8F;
+	font-size: 20px;
+	margin: 12px 0px;
+}

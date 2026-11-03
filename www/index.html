@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!--
+			File: index.html
+			Date: 4/26/2025 (modified: 5/12/2025)
+			Name: Kevin Viren
+		-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
+		<title>Forge Form</title>
+		
+		<!-- bootstrap css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		
+		<!-- font awesome -->
+		<link rel="stylesheet" href="css/all.css"/>
+		
+		<link rel="stylesheet" href="css/custom.css"/> 
+		<link rel="stylesheet" href="css/myStyles.css"/>
+		<link rel="stylesheet" href="css/footer.css"/>
+		<link rel="stylesheet" href="css/modals.css"/>
+		
+    </head>
+    <body>
+	
+		<div class="header row">
+			<div class="col">
+				<img src="assets/logo.png" id="logo" class="img img-fluid"/>
+			</div>			
+		</div>
+		
+		<div id="wrap">
+			<div id="main">
+			
+				<!-- ### Content is Loaded Here ### -->
+				<div id="page-home" class='app-page'></div>
+				<div id="page-exercises" class='app-page'></div>
+				<div id="page-settings" class='app-page'></div>
+			</div>
+		</div>
+
+		<div id="footer" class="footer">
+			<div class="row">
+				<div class="col">
+					<a href="#" data-id="#page-home" class="ui-button">
+						<div class="ui-button"><i class="fas fa-home ui-button"></i></div>
+					</a>
+				</div>
+				<div class="col">
+					<a href="#" data-id="#page-settings" class="ui-button">
+						<div class="ui-button"><i class="fas fa-cog ui-button"></i></div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="theModals">
+			<!-- Modals will load in here through jQuery .load() method -->
+		</div>
+			
+		<script src="js/jquery.min.js"></script>
+		<script src="js/qrcode.min.js"></script>
+		<script src="cordova.js"></script>
+		
+		<script>
+		
+		/* Load all pages */
+		$('#theModals').load('modals.html');
+		$('#page-home').load('home.html');
+		$('#page-exercises').load('exercises.html');
+		$('#page-settings').load('settings.html');
+		
+		</script>
+		
+		
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/modals_custom.js"></script>
+		<script src="js/menu.js"></script>
+		<script src="js/functions.js"></script>
+		
+		<script>
+		var user_hash;
+		var domain = "https://sickleswebdesign.webhostingforstudents.com/r2";
+		
+		
+		document.addEventListener("deviceready", function() {
+		
+			screen.orientation.lock('portrait'); // PLUGIN - screen orientation
+					
+		}, false);
+		
+		
+		
+		$(document).ready(function() {	
+			
+			if(localStorage.getItem("user_hash") === null) {
+				loadLogin();
+			} else {
+				user_hash = localStorage.getItem("user_hash");
+				loadPrograms(); // Check
+			}
+			
+			
+			user_hash = localStorage.getItem('user_hash');
+			if(user_hash) {
+			
+				// Submit data to the PHP file.
+				var formData = "hash="+user_hash+"&type=populate-settings-form";
+				$.ajax({
+					url: domain+"/ff_formprocess.php",
+					type: "POST",
+					data: formData,
+					success: function(res) {
+						var obj = $.parseJSON(res);
+						if(obj.success == 1) {
+							document.getElementById('email').value = obj.user_email;
+						} else {
+						
+						}
+					},
+					error: function(err) {
+						alert(err);
+					}
+					
+				});
+			
+			}
+			
+			
+			$('#page-settings').on('click', '#btn_logout_app', function() { logout(); });
+			
+			document.getElementById("btn-login-user").onclick = function() {
+				var formData = $('form[name=frm-login-account]').serialize()+"&type=login-user";
+				$.ajax({
+					url: domain+"/ff_formprocess.php",
+					type: "POST",
+					data: formData,
+					success: function(res) {
+						console.log(res);
+						var obj = $.parseJSON(res);
+						console.log(obj);
+						if(obj.success == 1) {
+							// User logged in successfully
+							localStorage.setItem('user_hash', obj.hash);
+							location.reload();
+							loadPrograms(); // Check
+						} else {
+							// Issue logging in user
+						}
+					},
+					error: function(err) {
+						alert(err);
+					}
+				
+				});
+			}
+					
+			
+			document.getElementById("btn-create-user").onclick = function() {
+				
+				var pass1 = document.getElementById('pass1').value;
+				var pass2 = document.getElementById('pass2').value;
+				
+				if(pass1 != pass2) {
+					alert("Passwords do not match!");
+				} else {
+					// Submit data to the PHP file.
+					var formData = $('form[name=frm-create-account]').serialize()+"&type=create-user";
+					
+					$.ajax({
+						url: domain+"/ff_formprocess.php",
+						type: "POST",
+						data: formData,
+						success: function(res) {
+							var obj = $.parseJSON(res);
+							if(obj.success == 1) {
+								// User created successfully
+								localStorage.setItem('user_hash', obj.hash);
+								location.reload();
+							} else {
+								// Issue creating user
+								document.getElementById('errMsg').innerText = obj.msg;
+							}
+						},
+						error: function(err) {
+							alert(err);
+						}
+					
+					});
+					
+				}
+			}
+			
+			
+			document.getElementById("btn-change-pass").onclick = function() {
+				
+				// Ensure inputs all have values
+				var newPass = document.getElementById('newPass').value;
+				
+				if(newPass != "") {
+				
+					// Submit data to the PHP file.
+					var formData = $('form[name=frm-change-pass]').serialize()+"&hash="+localStorage.getItem('user_hash')+"&type=change-pass";
+					
+					$.ajax({
+						url: domain+"/ff_formprocess.php",
+						type: "POST",
+						data: formData,
+						success: function(res) {
+							var obj = $.parseJSON(res);
+							if(obj.success == 1) {
+								// Password changed successfully
+								document.getElementById('newPass').value = "";
+								document.getElementById('change-pass-result').innerText = "SUCCESS";
+							} else {
+								document.getElementById('change-pass-result').innerText = "PASSWORD CHANGE FAILED";
+							}
+						},
+						error: function(err) {
+							alert(err);
+						}
+						
+					});
+				
+				} else {
+					document.getElementById('change-pass-result').innerText = "FAILED. No password entered.";
+				}
+				
+			}
+			
+			
+			$('#add-program-btn').on('click', function() {
+				$('#page-home').hide();
+				$('#page-exercises').show();
+				
+				var container = document.getElementById('exercise-container');
+				
+				document.getElementById('programName').value = ""; // clear name 
+				container.innerHTML = ""; // clear existing exercises 
+				container.insertAdjacentHTML('beforeend', buildExercise(1)); // insert first exercise
+			});
+			
+			
+			$('#add-exercise-btn').on('click', function() {
+				var container = document.getElementById('exercise-container');
+				var count = document.querySelectorAll('div.exercise').length;
+				
+				container.insertAdjacentHTML('beforeend', buildExercise(count + 1)); // insert new exercise below others
+			});
+			
+			
+			$('#save-program-btn').on('click', function() {
+				var programName = $("#programName").val().trim();
+				
+				if(!programName) {
+					alert('Program name is required.');
+				} else {
+					var exercises = [];
+					$('.exercise').each(function () {
+						var ex = {
+							name: $(this).find('.exName').val().trim(),
+							sets: $(this).find('.exSets').val().trim(),
+							reps: $(this).find('.exReps').val().trim(),
+							weight: $(this).find('.exWeight').val().trim(),
+							restTime: $(this).find('.exRestTime').val(),
+							notes: $(this).find('.exNotes').val().trim()
+						};
+						exercises.push(ex);
+					});
+				
+					var data = {
+						hash: user_hash,
+						type: 'save-program',
+						programName: programName,
+						exercises: JSON.stringify(exercises)
+					};
+				
+					$.ajax({
+						url: domain + '/ff_formprocess.php',
+						type: 'POST',
+						data: data,
+						success: function(res) {
+							var obj = $.parseJSON(res);
+							if(obj.success == 1) {
+								alert('Program saved successfully!');
+								$('#page-exercises').hide();
+								$('#page-home').show();
+								loadPrograms(); // Check
+							} else {
+								alert('Save failed: ' + obj.msg);
+							}
+						},
+						error: function (err) {
+							alert('An error occurred saving the program. Please make sure all necessary fields are filled');
+							console.error(err);
+						}
+					});
+				}
+				
+			});
+			
+		})
+		</script>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#wrap {
+  overflow: auto;
+}
+
+#main {
+  overflow: scroll;
+  padding-bottom: 76px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 12px;
+  
+
+  /* must be same height as the footer */
+}
+
+#page-information { 
+	background-color: rgba(50,50,50,0.8);
+	padding: 12px 8px;
+	color: white; 
+}
+
+.modal-body {
+	background-color: #323232;
+	color: white;
+}
+.modal-content {
+	background-color: transparent!important;
+}
+#footer {
+  /*position: relative;
+  margin-top: -76px;*/
+  position: absolute;
+  bottom: 0;
+  /* negative value of footer height */
+  /*height: 80px;*/
+  clear: both;
+  background-color: #323232;
+  width: 100%; 
+}
+
+#footer, .modal-footer i {
+	font-size: 24px;
+}
+
+div.ui-button {
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+}
+
+a.ui-button {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 20px;
+}
+
+a.ui-button:link,
+a.ui-button:visited {
+	color: white;
+	background-color: transparent;
+}
+
+a.ui-button:hover,
+a.ui-button:active {
+	color: black;
+	background-color: #6A6A6A;
+}
+
+#footer .col {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+#footer .row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
