@@ -1,5 +1,5 @@
 # forge-form
-A mobile fitness planner allowing for exercise logging as well as workout program creation and organization. Initially created as a final project for Lake Superior College's Mobile App Development course.
+A mobile fitness planner allowing for exercise logging as well as workout program creation and organization. Initially developed as a final project for Lake Superior College's Mobile App Development course.
 
 ***PLATFORM:*** Android  
 ***DEVELOPMENT FRAMEWORK:*** Apache Cordova  
